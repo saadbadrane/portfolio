@@ -2,7 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(npx tsc:*)",
-      "Bash(ls c:/Users/ayman/github-portfolio/.env*)",
+      "Bash(ls c:/Users/ayman/portfolio/.env*)",
       "Bash(npm install:*)"
     ]
   }

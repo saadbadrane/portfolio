@@ -12,7 +12,7 @@ import { useLoading } from "@/context/LoadingContext";
 export default function HeroSection() {
   const { t } = useLanguage();
   const { isLoaded } = useLoading();
-  const basePath = process.env.NODE_ENV === 'production' ? '/github-portfolio' : '';
+  const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
   const controlsH1 = useAnimation();
   const controlsP = useAnimation();

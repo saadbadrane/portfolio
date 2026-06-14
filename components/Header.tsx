@@ -10,7 +10,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const basePath = process.env.NODE_ENV === 'production' ? '/github-portfolio' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

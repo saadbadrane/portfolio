@@ -6,7 +6,7 @@ import { useCarousel } from "./useCarousel";
 import { useIsMobile } from "./useIsMobile";
 import { getTechIconUrl } from "@/lib/techIcons";
 
-const basePath = process.env.NODE_ENV === 'production' ? '/github-portfolio' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
 function OrgLogo({ src, alt, org }: { src: string; alt: string; org: string }) {
   const [failed, setFailed] = useState(false);
