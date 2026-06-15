@@ -1,22 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-const BOX_SIZE = 40; 
-const HALF = BOX_SIZE / 2;
-
-export default function DevCrosshair() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  // We use state for the label to ensure React handles the text updates smoothly
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+/**
+ * Halo lumineux orange -> violet qui suit la souris en douceur.
+ * - Un grand halo flou (glow) en arriere-plan, faible opacite.
+ * - Un petit point net au centre.
+ * Le tout suit le curseur avec un effet de lerp (trainee douce).
+ * Ne s'affiche pas sur mobile (gere par le wrapper).
+ */
+export default function MouseCrosshair() {
+  const haloRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let animationFrameId: number;
     let mouseX = -200;
     let mouseY = -200;
-    let currentX = -200;
-    let currentY = -200;
-    const lerp = 0.15;
+    // Le point suit vite, le halo suit plus lentement (effet de trainee)
+    let dotX = -200;
+    let dotY = -200;
+    let haloX = -200;
+    let haloY = -200;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -24,14 +29,18 @@ export default function DevCrosshair() {
     };
 
     const animate = () => {
-      currentX += (mouseX - currentX) * lerp;
-      currentY += (mouseY - currentY) * lerp;
+      // point : reactif
+      dotX += (mouseX - dotX) * 0.35;
+      dotY += (mouseY - dotY) * 0.35;
+      // halo : plus lent => trainee douce
+      haloX += (mouseX - haloX) * 0.12;
+      haloY += (mouseY - haloY) * 0.12;
 
-      if (wrapperRef.current) {
-        wrapperRef.current.style.setProperty("--cx", `${currentX}px`);
-        wrapperRef.current.style.setProperty("--cy", `${currentY}px`);
-        // Update state for the dev-tools label
-        setCoords({ x: Math.round(currentX), y: Math.round(currentY) });
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+      }
+      if (haloRef.current) {
+        haloRef.current.style.transform = `translate(${haloX}px, ${haloY}px) translate(-50%, -50%)`;
       }
 
       animationFrameId = requestAnimationFrame(animate);
@@ -46,69 +55,39 @@ export default function DevCrosshair() {
     };
   }, []);
 
-  const lineColor = "rgba(99, 102, 241, 0.15)";
-  const braceColor = "rgba(21, 93, 252, 0.8)"; // Blue braces
-  const coordColor = "rgba(255, 255, 255, 0.9)"; // White coordinates
-
   return (
     <div
-      ref={wrapperRef}
-      className="pointer-events-none fixed inset-0 z-50 overflow-hidden font-mono text-[10px]"
+      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
       aria-hidden="true"
     >
-      {/* ── Vertical Guide (X-Axis) ── */}
+      {/* Grand halo flou orange -> violet */}
       <div
-        className="absolute left-0 top-0 w-px h-full"
+        ref={haloRef}
+        className="absolute top-0 left-0"
         style={{
-          transform: "translateX(var(--cx, -200px))",
-          background: `linear-gradient(to bottom, transparent, ${lineColor}, transparent)`,
+          width: 180,
+          height: 180,
+          borderRadius: "9999px",
+          background:
+            "radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(124,58,237,0.14) 45%, rgba(124,58,237,0) 70%)",
+          filter: "blur(8px)",
+          willChange: "transform",
         }}
       />
 
-      {/* ── Horizontal Guide (Y-Axis) ── */}
+      {/* Petit point net au centre, lui aussi en degrade */}
       <div
-        className="absolute top-0 left-0 h-px w-full"
+        ref={dotRef}
+        className="absolute top-0 left-0"
         style={{
-          transform: "translateY(var(--cy, -200px))",
-          background: `linear-gradient(to right, transparent, ${lineColor}, transparent)`,
+          width: 10,
+          height: 10,
+          borderRadius: "9999px",
+          background: "linear-gradient(135deg, #f97316, #7c3aed)",
+          boxShadow: "0 0 8px rgba(249,115,22,0.6), 0 0 12px rgba(124,58,237,0.5)",
+          willChange: "transform",
         }}
       />
-
-      {/* ── The "Dev" Center Box ── */}
-      <div
-        className="absolute flex items-center justify-center"
-        style={{
-          width: BOX_SIZE,
-          height: BOX_SIZE,
-          left: `calc(var(--cx, -200px) - ${HALF}px)`,
-          top: `calc(var(--cy, -200px) - ${HALF}px)`,
-        }}
-      >
-        {/* Code Braces instead of camera corners */}
-        <div className="absolute top-0 left-0 text-lg leading-none" style={{ color: braceColor }}>{"{"}</div>
-        <div className="absolute bottom-0 right-0 text-lg leading-none" style={{ color: braceColor }}>{"}"}</div>
-
-        {/* Center Pixel Dot */}
-        <div className="w-1 h-1 rounded-full" style={{ backgroundColor: braceColor }} />
-
-        {/* Real-time Coordinate Label (Floating Dev Tools) */}
-        <div 
-          className="absolute top-full left-full mt-2 ml-2 px-1.5 py-0.5 border flex flex-col gap-0.5 backdrop-blur-sm"
-          style={{ 
-            borderColor: braceColor, 
-            backgroundColor: "rgba(0,0,0,0.6)",
-            color: coordColor 
-          }}
-        >
-          <div className="flex justify-between gap-4">
-            <span>X: {coords.x}px</span>
-            
-          </div>
-          <div className="flex justify-between gap-4">
-            <span>Y: {coords.y}px</span>
-          </div>
-        </div>
-      </div>
     </div>
   );
-}   
+}

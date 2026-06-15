@@ -49,8 +49,10 @@ const skillsList = {
     "CI/CD",
   ],
   cloudMlops: [
-    "AWS (ECS, Lambda, S3)",
-    "GCP (Cloud Run, Cloud Storage)",
+    "GCP (Cloud Run, Storage, Scheduler)",
+    "Docker",
+    "GitLab CI/CD",
+    "DevContainers",
     "Qdrant",
     "PostgreSQL",
     "MLOps",
@@ -72,7 +74,7 @@ export const content = {
       ...commonInfo,
       name: "Saad Badrane",
       profileSummary:
-        "Computer engineering graduate (AI & Data) from IMT Saint-Étienne, specialized in intelligent systems, image processing, and deploying ML models to production. Significant experience in AI tools development, RAG architectures, and recommendation systems. Currently doing an apprenticeship at Groupe Casino.",
+        "Computer Engineer (IMT Saint-Étienne), specialized in Computer Vision & AI — available September 2026. I master R&D algorithmic design in Artificial Intelligence and Computer Vision, along with their industrialization through automated MLOps pipelines on the Cloud. Seeking a permanent role (CDI) as an AI Engineer, Data Scientist, or Software Engineer to bring my technical and analytical skills to ambitious projects.",
     },
     nav: {
       home: "Home",
@@ -88,7 +90,7 @@ export const content = {
         "I am a passionate AI & Data engineer with a strong foundation in machine learning, computer vision, and modern software architectures. Currently completing my engineering degree at",
       school: "IMT Saint-Étienne",
       descriptionEnd:
-        " through an apprenticeship at Groupe Casino, I am eager to apply my technical and analytical skills on ambitious projects.",
+        ", I built strong experience through my apprenticeship at Groupe Casino (AI & MLOps) and ambitious R&D projects. Available September 2026, I am looking for a permanent position where I can deliver end-to-end AI and software solutions.",
       softSkillsTitle: "Soft Skills",
       softSkills: ["Rigor", "Curiosity", "Team Spirit", "Adaptability"],
       educationTitle: "Education",
@@ -120,17 +122,17 @@ export const content = {
       list: [
         {
           company: "Groupe Casino, Saint-Étienne",
-          role: "AI Engineer / Project Manager — Apprenticeship",
-          dates: "Sept. 2025 - Sept. 2026",
+          role: "AI & MLOps Engineer — Apprenticeship",
+          dates: "Sept. 2025 - Aug. 2026",
           description:
-            "Development of classification, recommendation, and NLP models on customer data. Production deployment via Docker, CI/CD, and AWS (ECS, Lambda). Built Python APIs (FastAPI) and automated pipelines. Contributed to the design of GenAI architectures (RAG, vector search) for document exploitation.",
+            "Cproboost (MLOps): designed an ML pipeline (LightGBM/RandomForest) processing 10M+ transactions, deployed as a decoupled architecture on GCP (Cloud Run, Cloud Storage, Scheduler) with a Streamlit UI. Merch Intelligence (modular AI & Vision system): built a complete 4-module business architecture combining hybrid planogram generation (Gemini LLM classifier, Python validator, OR-Tools CP-SAT solver) and a photo-audit pipeline (OpenCV metrology coupled with LLM agents).",
         },
         {
           company: "Groupe OCP, Morocco",
-          role: "Web Developer — Internship",
+          role: "Full-Stack & Data Developer — Internship",
           dates: "May 2024 - June 2024",
           description:
-            "Incident management application with automated tickets and analytical dashboards. Full-stack web development (Laravel, PHP, JavaScript) with Docker integration.",
+            "End-to-end development of a business application with a graphical interface, database, and ticketing system. Applied solid software practices (MVC architecture, modularization, testing). Web stack: Laravel, PHP, JavaScript with Docker integration.",
         },
       ],
     },
@@ -201,16 +203,16 @@ export const content = {
           slug: "lanesight",
           title: "LaneSight — AI-Powered Lane Perception",
           description:
-            "Hybrid ViT-UNet model for road lane perception, unifying semantic segmentation, geometric modeling (UFLD), and contextual filtering (YOLO). Reaches 85%+ IoU at 12-20 FPS on CULane.",
+            "Hybrid ViT-UNet model for road lane perception, unifying semantic segmentation, geometric modeling (UFLD), and contextual filtering (YOLO). Reaches 85%+ IoU at 15-20 FPS on CULane.",
           tech: ["Python", "PyTorch", "Vision Transformer", "OpenCV", "YOLO", "Streamlit"],
           github: "https://github.com/saadbadrane",
-          fullDescription: `LaneSight — AI-Powered Lane Perception for Real-World Driving\n\nLaneSight was designed to overcome the limitations of classical vision methods under real driving conditions (worn markings, lighting variations, occlusions). This project, co-developed with Walid Benmaarouf, demonstrates a full mastery of the computer vision stack — from architectural design to a web UI.\n\nArchitecture & Technical Innovations\n\nHybridViTUNet Network\nThe architecture uses a CNN encoder coupled with a Vision Transformer (ViT) bottleneck. This approach preserves the local precision of convolutions while gaining global scene understanding through the ViT's self-attention mechanisms.\n\nSecure Fusion Algorithm\nTo prevent false positives (such as misidentifying safety rails as lanes), the system crosses geometric hypotheses from the UFLD model with semantic confidence maps from the ViT (acceptance threshold > 15%). Additional YOLO-based object detection filters and rejects erroneous detections caused by overlapping vehicles.\n\nTraining & Optimization\nTrained on the CULane dataset (133K images). The extreme class imbalance between background and lane lines was resolved via a hybrid custom loss function combining weighted Cross-Entropy and Dice loss.\n\nDeployment & Performance\nStreamlit interface validating real-time video streams (12-20 FPS) with IoU accuracy above 85%, perfectly suited for driver assistance systems.\n\nImpact\nThe model was trained end-to-end successfully despite extreme class imbalance. Deployed on an interactive Streamlit interface (with 2x2 Split comparative visualizations), the unified system reaches 85%+ IoU while maintaining inference fluidity suitable for ADAS systems.`,
+          fullDescription: `LaneSight — AI-Powered Lane Perception for Real-World Driving\n\nLaneSight was designed to overcome the limitations of classical vision methods under real driving conditions (worn markings, lighting variations, occlusions). This project, co-developed with Walid Benmaarouf, demonstrates a full mastery of the computer vision stack — from architectural design to a web UI.\n\nArchitecture & Technical Innovations\n\nHybridViTUNet Network\nThe architecture uses a CNN encoder coupled with a Vision Transformer (ViT) bottleneck. This approach preserves the local precision of convolutions while gaining global scene understanding through the ViT's self-attention mechanisms.\n\nSecure Fusion Algorithm\nTo prevent false positives (such as misidentifying safety rails as lanes), the system crosses geometric hypotheses from the UFLD model with semantic confidence maps from the ViT (acceptance threshold > 15%). Additional YOLO-based object detection filters and rejects erroneous detections caused by overlapping vehicles.\n\nTraining & Optimization\nTrained on the CULane dataset (133K images). The extreme class imbalance between background and lane lines was resolved via a hybrid custom loss function combining weighted Cross-Entropy and Dice loss.\n\nDeployment & Performance\nStreamlit interface validating real-time video streams (15-20 FPS) with IoU accuracy above 85%, perfectly suited for driver assistance systems.\n\nImpact\nThe model was trained end-to-end successfully despite extreme class imbalance. Deployed on an interactive Streamlit interface (with 2x2 Split comparative visualizations), the unified system reaches 85%+ IoU while maintaining inference fluidity suitable for ADAS systems.`,
           features: [
             "Hybrid ViT-UNet architecture (CNN encoder + ViT bottleneck)",
             "Multi-paradigm inference: semantic segmentation + UFLD + YOLO",
             "Trained on CULane (133K images)",
             "Hybrid loss (weighted Cross-Entropy + Dice) for extreme class imbalance",
-            "Real-time Streamlit interface (12-20 FPS)",
+            "Real-time Streamlit interface (15-20 FPS)",
             "85%+ IoU accuracy",
             "Secure fusion algorithm preventing false positives",
             "Co-developed with Walid Benmaarouf at IMT Saint-Étienne",
@@ -220,7 +222,7 @@ export const content = {
           slug: "mimestis",
           title: "Mimestis — Enterprise RAG Assistant",
           description:
-            "End-to-end RAG enterprise chatbot with documentary ingestion pipeline, semantic vector search, strict guardrails against hallucinations, and a fluid conversational UI.",
+            "End-to-end RAG enterprise chatbot (academic project for Edumotiv) with documentary ingestion pipeline, semantic vector search, strict guardrails against hallucinations, and a fluid conversational UI.",
           tech: ["Python", "LangChain", "RAG", "Qdrant", "GPT", "Docker"],
           github: "https://github.com/saadbadrane",
           fullDescription: `Mimestis — Enterprise Conversational RAG Assistant\n\nIn large organizations, internal information is often fragmented and hard to access, significantly slowing down employee productivity. Mimestis was designed to solve this by offering a single, intelligent, conversational access point to the enterprise knowledge base. The main challenge wasn't just technological — it was about trust: the system had to provide accurate and secure answers to be adopted daily.\n\nArchitecture & Technical Challenges\n\nIngestion and Vectorization\nRaw internal documents are digested, segmented (intelligent chunking to preserve semantic context), and transformed into vectors (embeddings) stored in a vector database (Qdrant) for ultra-fast search.\n\nRetrieval Precision\nThe main challenge of a RAG system is the relevance of retrieved documents. The search pipeline was optimized to ensure only the most relevant information sources are injected into the generative model's context.\n\nResponse Security\nDeep prompt engineering and security rule implementation were performed. The model is constrained by strict instructions forbidding it from inventing information and requiring it to cite sources, guaranteeing the integrity of answers provided to employees.\n\nTech Stack\n- Python + LangChain pipeline\n- Qdrant vector database\n- Docker containerization\n- Modular orchestration with automated document ingestion\n\nImpact\nMimestis transforms enterprise document search. With a fluid, reactive UI, employees can now get immediate, sourced answers to their operational or HR questions. This project illustrates my ability to deliver an end-to-end AI product, from underlying data engineering to the final user experience.`,
@@ -377,7 +379,7 @@ export const content = {
       ...commonInfo,
       name: "Saad Badrane",
       profileSummary:
-        "Jeune diplômé ingénieur en informatique (IA & Data) de l'IMT Saint-Étienne, spécialisé en systèmes intelligents, traitement d'images et déploiement de modèles en production. Expérience significative en développement d'outils IA, architectures RAG et systèmes de recommandation. Actuellement en alternance chez Groupe Casino.",
+        "Ingénieur Informatique (IMT Saint-Étienne), spécialité Computer Vision & IA — disponible septembre 2026. Je maîtrise la conception R&D algorithmique en Intelligence Artificielle et Computer Vision, ainsi que leur industrialisation via des pipelines MLOps automatisés sur Cloud. À la recherche d'un poste en CDI comme Ingénieur IA, Data Scientist ou Software Engineer pour mettre mes compétences techniques et analytiques au service de projets ambitieux.",
     },
     nav: {
       home: "Accueil",
@@ -393,7 +395,7 @@ export const content = {
         "Je suis un ingénieur IA & Data passionné, avec une solide base en machine learning, vision par ordinateur et architectures logicielles modernes. Actuellement en fin de cursus d'ingénieur à",
       school: "IMT Saint-Étienne",
       descriptionEnd:
-        " via une alternance chez Groupe Casino, je suis impatient de mettre mes compétences techniques et analytiques au service de projets ambitieux.",
+        ", j'ai construit une solide expérience via mon alternance chez Groupe Casino (IA & MLOps) et des projets R&D ambitieux. Disponible en septembre 2026, je recherche un poste en CDI où livrer des solutions IA et logicielles de bout en bout.",
       softSkillsTitle: "Soft Skills",
       softSkills: ["Rigueur", "Curiosité", "Esprit d'équipe", "Adaptabilité"],
       educationTitle: "Formation",
@@ -425,17 +427,17 @@ export const content = {
       list: [
         {
           company: "Groupe Casino, Saint-Étienne",
-          role: "Chef de Projet / Développeur IA — Alternance",
-          dates: "Sept. 2025 - Sept. 2026",
+          role: "Ingénieur IA & MLOps — Alternance",
+          dates: "Sept. 2025 - Août 2026",
           description:
-            "Développement de modèles de classification, recommandation et NLP pour les données clients. Déploiement en production via Docker, CI/CD et AWS (ECS, Lambda). Création d'APIs Python (FastAPI) et pipelines automatisés. Participation à la conception d'architectures GenAI (RAG, vector search) pour l'exploitation documentaire.",
+            "Cproboost (MLOps) : conception d'un pipeline ML (LightGBM/RandomForest) traitant +10M de transactions, déployé en architecture découplée sur GCP (Cloud Run, Cloud Storage, Scheduler) avec UI sous Streamlit. Merch Intelligence (système modulaire IA & Vision) : conception d'une architecture métier complète (4 modules) combinant la génération de planogrammes hybride (classifieur LLM Gemini, validateur Python, solveur OR-Tools CP-SAT) et un pipeline d'audit photographique (métrologie OpenCV couplée à des agents LLM).",
         },
         {
           company: "Groupe OCP, Maroc",
-          role: "Développeur Web — Stage",
+          role: "Développeur Full-Stack & Data — Stage",
           dates: "Mai 2024 - Juin 2024",
           description:
-            "Application de gestion des incidents avec tickets automatisés et tableaux de bord analytiques. Développement web full-stack (Laravel, PHP, JavaScript) et intégration Docker.",
+            "Développement complet d'une application métier avec interface graphique, base de données et système de tickets. Utilisation de bonnes pratiques logicielles (architecture MVC, modularisation, tests). Stack web : Laravel, PHP, JavaScript avec intégration Docker.",
         },
       ],
     },
@@ -506,16 +508,16 @@ export const content = {
           slug: "lanesight",
           title: "LaneSight — Perception de Voies par IA",
           description:
-            "Modèle Hybrid ViT-UNet pour la perception de voies routières, unifiant segmentation sémantique, modélisation géométrique (UFLD) et filtrage contextuel (YOLO). Atteint +85% d'IoU à 12-20 FPS sur CULane.",
+            "Modèle Hybrid ViT-UNet pour la perception de voies routières, unifiant segmentation sémantique, modélisation géométrique (UFLD) et filtrage contextuel (YOLO). Atteint +85% d'IoU à 15-20 FPS sur CULane.",
           tech: ["Python", "PyTorch", "Vision Transformer", "OpenCV", "YOLO", "Streamlit"],
           github: "https://github.com/saadbadrane",
-          fullDescription: `LaneSight — Système de Perception de Voies par IA\n\nLaneSight a été conçu pour surmonter les limitations des méthodes de vision classiques face aux conditions réelles de conduite (marquages effacés, variations d'éclairage, occlusions). Ce projet, co-réalisé avec Walid Benmaarouf, démontre une maîtrise complète de la stack de vision par ordinateur, de la conception architecturale jusqu'à l'interface utilisateur web.\n\nArchitecture & Innovations Techniques\n\nRéseau HybridViTUNet\nL'architecture utilise un encodeur CNN couplé à un bottleneck Vision Transformer (ViT). Cette approche permet de conserver la précision locale des convolutions tout en acquérant la compréhension globale de la scène grâce aux mécanismes de Self-Attention du ViT.\n\nAlgorithme de Fusion Sécurisé\nPour éviter les faux positifs (comme l'identification erronée de rails de sécurité), le système croise les hypothèses géométriques du modèle UFLD avec les cartes de confiance sémantique du ViT (seuil d'acceptation > 15%). Une validation supplémentaire par détection d'objets (YOLO) permet de filtrer et rejeter les détections erronées causées par la superposition de véhicules.\n\nEntraînement & Optimisation\nApprentissage sur le dataset CULane (133K images). Résolution du déséquilibre extrême de classes via une fonction de perte combinant Cross-Entropy pondérée et Dice loss.\n\nDéploiement & Performance\nInterface Streamlit validant les flux vidéo en temps réel (12-20 FPS) avec une précision IoU supérieure à 85%, parfaitement adaptée aux systèmes d'assistance à la conduite.\n\nImpact\nLe modèle a été entraîné de bout en bout avec succès malgré le déséquilibre extrême entre l'arrière-plan et les lignes de voies. Déployé sur une interface Streamlit (avec visualisations comparatives en vue Split 2x2), le système unifié atteint une précision de plus de 85% d'IoU tout en maintenant une fluidité d'inférence adaptée aux systèmes ADAS.`,
+          fullDescription: `LaneSight — Système de Perception de Voies par IA\n\nLaneSight a été conçu pour surmonter les limitations des méthodes de vision classiques face aux conditions réelles de conduite (marquages effacés, variations d'éclairage, occlusions). Ce projet, co-réalisé avec Walid Benmaarouf, démontre une maîtrise complète de la stack de vision par ordinateur, de la conception architecturale jusqu'à l'interface utilisateur web.\n\nArchitecture & Innovations Techniques\n\nRéseau HybridViTUNet\nL'architecture utilise un encodeur CNN couplé à un bottleneck Vision Transformer (ViT). Cette approche permet de conserver la précision locale des convolutions tout en acquérant la compréhension globale de la scène grâce aux mécanismes de Self-Attention du ViT.\n\nAlgorithme de Fusion Sécurisé\nPour éviter les faux positifs (comme l'identification erronée de rails de sécurité), le système croise les hypothèses géométriques du modèle UFLD avec les cartes de confiance sémantique du ViT (seuil d'acceptation > 15%). Une validation supplémentaire par détection d'objets (YOLO) permet de filtrer et rejeter les détections erronées causées par la superposition de véhicules.\n\nEntraînement & Optimisation\nApprentissage sur le dataset CULane (133K images). Résolution du déséquilibre extrême de classes via une fonction de perte combinant Cross-Entropy pondérée et Dice loss.\n\nDéploiement & Performance\nInterface Streamlit validant les flux vidéo en temps réel (15-20 FPS) avec une précision IoU supérieure à 85%, parfaitement adaptée aux systèmes d'assistance à la conduite.\n\nImpact\nLe modèle a été entraîné de bout en bout avec succès malgré le déséquilibre extrême entre l'arrière-plan et les lignes de voies. Déployé sur une interface Streamlit (avec visualisations comparatives en vue Split 2x2), le système unifié atteint une précision de plus de 85% d'IoU tout en maintenant une fluidité d'inférence adaptée aux systèmes ADAS.`,
           features: [
             "Architecture Hybrid ViT-UNet (encodeur CNN + bottleneck ViT)",
             "Inférence multi-paradigme : segmentation sémantique + UFLD + YOLO",
             "Entraînement sur CULane (133K images)",
             "Fonction de perte hybride (Cross-Entropy pondérée + Dice)",
-            "Interface Streamlit temps réel (12-20 FPS)",
+            "Interface Streamlit temps réel (15-20 FPS)",
             "Précision IoU > 85%",
             "Algorithme de fusion sécurisé évitant les faux positifs",
             "Co-développé avec Walid Benmaarouf à l'IMT Saint-Étienne",
@@ -525,7 +527,7 @@ export const content = {
           slug: "mimestis",
           title: "Mimestis — Assistant RAG d'Entreprise",
           description:
-            "Chatbot RAG d'entreprise de bout en bout avec pipeline d'ingestion documentaire, recherche sémantique vectorielle, garde-fous stricts anti-hallucinations et UI conversationnelle fluide.",
+            "Chatbot RAG d'entreprise de bout en bout (projet académique pour Edumotiv) avec pipeline d'ingestion documentaire, recherche sémantique vectorielle, garde-fous stricts anti-hallucinations et UI conversationnelle fluide.",
           tech: ["Python", "LangChain", "RAG", "Qdrant", "GPT", "Docker"],
           github: "https://github.com/saadbadrane",
           fullDescription: `Mimestis — Assistant Conversationnel RAG d'Entreprise\n\nDans les grandes organisations, l'information interne est souvent fragmentée et difficile d'accès, ce qui ralentit considérablement la productivité des employés. Mimestis a été conçu pour résoudre ce problème en offrant un point d'accès unique, intelligent et conversationnel à la base de connaissances de l'entreprise. L'enjeu principal n'était pas seulement technologique, mais reposait sur la confiance : le système devait fournir des réponses exactes et sécurisées pour être adopté au quotidien.\n\nArchitecture & Défis Techniques\n\nIngestion et Vectorisation\nLes documents internes bruts sont digérés, segmentés (chunking intelligent pour préserver le contexte sémantique) et transformés en vecteurs (embeddings) stockés dans une base de données vectorielle (Qdrant) pour une recherche ultrarapide.\n\nPrécision du Retrieval\nLe défi majeur d'un système RAG est la pertinence des documents remontés. Le pipeline de recherche a été optimisé pour s'assurer que seules les sources d'information les plus pertinentes sont injectées dans le contexte du modèle génératif.\n\nSécurisation des Réponses\nUn travail approfondi de prompt engineering et d'implémentation de règles de sécurité a été réalisé. Le modèle est contraint par des instructions strictes lui interdisant d'inventer des informations et l'obligeant à citer ses sources.\n\nImpact\nMimestis transforme l'expérience de recherche documentaire en entreprise. Grâce à une interface fluide et réactive, les employés peuvent désormais obtenir des réponses immédiates et sourcées à leurs questions opérationnelles ou RH.`,
